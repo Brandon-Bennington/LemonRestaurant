@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     var body: some View {
         NavigationView{
             VStack  {
@@ -16,13 +16,18 @@ struct ContentView: View {
                 Image(systemName: "keyboard")
                     .imageScale(.large)
                     .foregroundStyle(.yellow)
-                
+
                 Text("Hello, world!")
                     .font(.largeTitle)
                     .foregroundColor(.blue)
-                NavigationLink(destination:
-                    AboutView()) {
+
+                NavigationLink(destination: AboutView()) {
                     Text("Go to About")
+                }
+
+                // Add this link to your ContentView
+                NavigationLink(destination: ReservationForm()) {
+                    Text("Reserve a Table")
                 }
             }
             .padding()
