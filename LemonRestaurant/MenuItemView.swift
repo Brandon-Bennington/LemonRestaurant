@@ -5,32 +5,40 @@ struct MenuItemView: View {
 
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(item.name)
                     .font(.headline)
-                Text("$" + String(format: "%.2f", item.price))
+                
+                Text(item.description)
+                    .font(.subheadline)
                     .foregroundColor(.secondary)
+
+                Text(String(format: "$%.2f", item.price))
+                    .font(.callout)
+                    .foregroundColor(.primary)
             }
 
             Spacer()
 
-            if item.price > 10 {
-                HStack {
+            if item.price >= 10 {
+                HStack(spacing: 4) {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
                     Text("Premium")
                         .font(.caption)
+                        .fontWeight(.semibold)
                 }
-                .font(.caption)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 5)
                 .foregroundColor(.orange)
-                .padding(6)
-                .background(Color.orange.opacity(0.1))
-                .cornerRadius(6)
+                .background(Color.orange.opacity(0.2))
+                .cornerRadius(8)
             }
         }
+        .padding(.vertical, 5)
     }
 }
 
-// #Preview {
-//     MenuItemView()
-// }
+#Preview {
+    MenuItemView(item: MenuItem(name: "Steak", description: "Juicy grilled", price: 14.00))
+}
